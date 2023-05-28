@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SootheMe</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logoapp">Logo Aplikasi</string>
+    <string name="username">Masukkan Username</string>
+    <string name="elemen_gambar">elemen gambar</string>
 </resources>
