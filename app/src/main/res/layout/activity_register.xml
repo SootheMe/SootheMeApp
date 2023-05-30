@@ -5,7 +5,7 @@
     android:layout_width="360dp"
     android:layout_height="800dp"
     android:background="@color/color4"
-    tools:context=".ui.LoginActivity">
+    tools:context=".ui.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -45,6 +45,28 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="45dp"
+            android:autofillHints=""
+            android:background="@drawable/rounded"
+            android:drawableStart="@drawable/email"
+            android:drawablePadding="10dp"
+            android:elevation="15dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username" />
+
+        <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,20 +81,21 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:padding="10dp"
+            android:textColor="@color/black"
             android:textColorHint="@android:color/darker_gray"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
+            app:layout_constraintTop_toBottomOf="@+id/email" />
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/register_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:background="@drawable/rounded"
             android:elevation="15dp"
-            android:hint="@string/log_in"
+            android:hint="@string/register"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="19sp"
@@ -82,17 +105,17 @@
             app:layout_constraintTop_toBottomOf="@+id/password" />
 
         <TextView
-            android:id="@+id/tv_toRegister"
+            android:id="@+id/tv_toLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="@string/login_toregis"
+            android:text="@string/regis_tologin"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/login_button"
-            app:layout_constraintStart_toStartOf="@+id/login_button"
-            app:layout_constraintTop_toBottomOf="@+id/login_button" />
+            app:layout_constraintEnd_toEndOf="@+id/register_button"
+            app:layout_constraintStart_toStartOf="@+id/register_button"
+            app:layout_constraintTop_toBottomOf="@+id/register_button" />
 
         <ImageView
             android:layout_width="360dp"
