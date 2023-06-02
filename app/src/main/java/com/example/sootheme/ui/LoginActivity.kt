@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.sootheme.databinding.ActivityLoginBinding
-import com.airbnb.lottie.LottieAnimationView
-import com.example.sootheme.R
 
 class LoginActivity : AppCompatActivity() {
 
