@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.sootheme.MainActivity
 import com.example.sootheme.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -23,6 +24,9 @@ class LoginActivity : AppCompatActivity() {
 
         binding.loginButton.setOnClickListener {
             loadingState(true)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 

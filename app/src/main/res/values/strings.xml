@@ -11,4 +11,11 @@
     <string name="email">Masukkan Email</string>
     <string name="login_toregis">Tidak Punya Akun? <font color="#FF8A00"><b>Register</b></font></string>
     <string name="regis_tologin">Sudah Punya Akun? <font color="#FF8A00"><b>Log In</b></font></string>
+    <string name="waktu">Waktu</string>
+    <string name="calendar">Calendar</string>
+    <string name="foto_profil">Foto Profil</string>
+    <string name="soothebot">SootheBot</string>
+    <string name="bedtime">Bedtime Story</string>
+    <string name="soothemusic">SootheMusic</string>
+    <string name="consultation">Consultation</string>
 </resources>
