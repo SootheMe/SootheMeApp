@@ -18,4 +18,13 @@
     <string name="bedtime">Bedtime Story</string>
     <string name="soothemusic">SootheMusic</string>
     <string name="consultation">Consultation</string>
+    <string name="soothebot_1">Hello! \n I\'m Soothebot~</string>
+    <string name="soothebot_2">How Can I Help\nYou?</string>
+    <string name="cb_button">Tap me!</string>
+    <string name="fill_field">Harap isi bidang kosong!</string>
+    <string name="password_email_error">Harap isi email dan password dengan benar!</string>
+    <string name="register_success">Register Berhasil!</string>
+    <string name="register_failed">Register Gagal!</string>
+    <string name="login_success">Login Berhasil!</string>
+    <string name="login_failed">Login Gagal!</string>
 </resources>

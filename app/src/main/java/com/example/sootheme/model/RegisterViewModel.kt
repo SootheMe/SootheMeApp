@@ -24,7 +24,13 @@ class RegisterViewModel(private val repo: UserRepository) : ViewModel() {
                 call: Call<UserResponse>,
                 response: Response<UserResponse>
             ) {
-                _error.value = !response.isSuccessful
+                if (response.isSuccessful) {
+                    _error.value = false
+                    _message.postValue(response.message())
+                } else {
+                    _error.value = true
+                    _message.postValue(response.message())
+                }
             }
 
             override fun onFailure(call: Call<UserResponse>, t: Throwable) {
