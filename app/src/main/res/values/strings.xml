@@ -27,4 +27,5 @@
     <string name="register_failed">Register Gagal!</string>
     <string name="login_success">Login Berhasil!</string>
     <string name="login_failed">Login Gagal!</string>
+    <string name="welcome">Selamat Datang!</string>
 </resources>

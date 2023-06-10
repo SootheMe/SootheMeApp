@@ -41,9 +41,9 @@ class SettingPref private constructor(
         }
     }
 
-    /*fun getFirstTime(): Flow<Boolean> = dataStore.data.map {
+    fun getFirstTime(): Flow<Boolean> = dataStore.data.map {
         it[FIRST_TIME_KEY] ?: true
-    }*/
+    }
 
     suspend fun login(){
         dataStore.edit {

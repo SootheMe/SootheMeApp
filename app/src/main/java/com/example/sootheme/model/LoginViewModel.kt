@@ -14,6 +14,8 @@ import retrofit2.Response
 
 class LoginViewModel(private val repo: UserRepository) : ViewModel() {
 
+    fun getFirstTime(): LiveData<Boolean> = repo.getFirstTime()
+
     private var _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
 
@@ -50,6 +52,12 @@ class LoginViewModel(private val repo: UserRepository) : ViewModel() {
             if (token != null) {
                 repo.saveUserToken(token)
             }
+        }
+    }
+
+    fun userLoginApp() {
+        viewModelScope.launch {
+            repo.login()
         }
     }
 }

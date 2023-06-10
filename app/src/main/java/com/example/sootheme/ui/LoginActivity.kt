@@ -27,6 +27,16 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        loginViewModel.getFirstTime().observe(this) {
+            if (it == true) {
+                val msg = getString(R.string.welcome)
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+            } else {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+        }
+
         binding.tvToRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
@@ -54,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
                         loadingState(false)
                         val msg = getString(R.string.login_success)
                         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-                        //loginViewModel.userLoginApp()
+                        loginViewModel.userLoginApp()
                         loginViewModel.user.observe(this) { user ->
                             if (user != null) {
                                 loginViewModel.saveUserToken(user.token)

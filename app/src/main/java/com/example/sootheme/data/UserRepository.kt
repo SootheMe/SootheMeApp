@@ -24,6 +24,12 @@ class UserRepository(
 
     suspend fun saveUserName(value: String) = pref.saveUserName(value)
 
+    fun getFirstTime(): LiveData<Boolean> = pref.getFirstTime().asLiveData()
+
+    suspend fun login() = pref.login()
+
+    suspend fun logout() = pref.logout()
+
     fun userLogin(email: String, password: String): Call<UserResponse> {
         val user: Map<String, String> = mapOf(
             "email" to email,

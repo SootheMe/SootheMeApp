@@ -66,25 +66,21 @@ class MainActivity : AppCompatActivity() {
         binding.tvBot.setOnClickListener {
             val intent = Intent(this, BotActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         binding.tvStory.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         binding.tvMusic.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         binding.tvConsultation.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 
