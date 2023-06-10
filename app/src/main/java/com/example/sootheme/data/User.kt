@@ -8,4 +8,7 @@ import kotlinx.parcelize.Parcelize
 data class User(
     @field:SerializedName("accessToken")
     val token: String,
+
+    @field:SerializedName("userName")
+    val userName: String,
 ) : Parcelable

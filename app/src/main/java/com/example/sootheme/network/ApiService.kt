@@ -2,6 +2,7 @@ package com.example.sootheme.network
 
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
@@ -13,5 +14,9 @@ interface ApiService {
     @POST("register")
     fun userRegister(
         @Body user: Map<String, String>
+    ): Call<UserResponse>
+
+    @GET("username")
+    fun userName(
     ): Call<UserResponse>
 }

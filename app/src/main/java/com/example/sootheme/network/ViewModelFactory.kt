@@ -11,6 +11,7 @@ class ViewModelFactory(private val repo: UserRepository) : ViewModelProvider.New
             return when {
                 modelClass.isAssignableFrom(com.example.sootheme.model.LoginViewModel::class.java) -> com.example.sootheme.model.LoginViewModel(repo) as T
                 modelClass.isAssignableFrom(com.example.sootheme.model.RegisterViewModel::class.java) -> com.example.sootheme.model.RegisterViewModel(repo) as T
+                modelClass.isAssignableFrom(com.example.sootheme.model.MainViewModel::class.java) -> com.example.sootheme.model.MainViewModel(repo) as T
                 else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
         }

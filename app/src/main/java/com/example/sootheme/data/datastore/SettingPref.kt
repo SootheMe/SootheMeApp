@@ -11,15 +11,15 @@ import kotlinx.coroutines.flow.map
 class SettingPref private constructor(
     private val dataStore: DataStore<Preferences>
 ) {
-    /*fun getUserName(): Flow<String> = dataStore.data.map {
+    fun getUserName(): Flow<String> = dataStore.data.map {
         it[USER_NAME_KEY] ?: DEFAULT_VALUE
-    }*/
+    }
 
-    /*suspend fun saveUserName(name: String) {
+    suspend fun saveUserName(name: String) {
         dataStore.edit {
             it[USER_NAME_KEY] = name
         }
-    }*/
+    }
 
     /*fun getUserEmail(): Flow<String> = dataStore.data.map {
         it[USER_EMAIL_KEY] ?: DEFAULT_VALUE
@@ -61,6 +61,7 @@ class SettingPref private constructor(
     companion object {
         private val USER_TOKEN_KEY = stringPreferencesKey("user_token")
         private val FIRST_TIME_KEY = booleanPreferencesKey("first_time")
+        private val USER_NAME_KEY = stringPreferencesKey("user_name")
 
         @Volatile
         private var INSTANCE: SettingPref? = null

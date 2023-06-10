@@ -6,10 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.sootheme.databinding.ActivityMainBinding
+import com.example.sootheme.model.LoginViewModel
+import com.example.sootheme.model.MainViewModel
+import com.example.sootheme.network.ViewModelFactory
 import com.example.sootheme.ui.BotActivity
 import com.example.sootheme.ui.RegisterActivity
 import java.text.SimpleDateFormat
@@ -20,6 +24,9 @@ import java.util.Calendar
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val viewModel: MainViewModel by viewModels {
+        ViewModelFactory.getInstance(context = this)
+    }
     private lateinit var clockView: TextView
     private lateinit var dateView: TextView
     private val handler = Handler()
@@ -37,6 +44,24 @@ class MainActivity : AppCompatActivity() {
 
         clockView = findViewById(R.id.clock_view)
         dateView = findViewById(R.id.date_view)
+
+        viewModel.getUserToken().observe(this) { token ->
+            if (token != null) {
+                viewModel.getUser(token)
+            }
+        }
+
+        viewModel.user.observe(this) { user ->
+            if (user != null) {
+                viewModel.saveUserName(user.userName)
+            }
+        }
+
+        viewModel.getUserName().observe(this) { userName ->
+            if (userName != null) {
+                binding.helloUser.text = "Hello, $userName!"
+            }
+        }
 
         binding.tvBot.setOnClickListener {
             val intent = Intent(this, BotActivity::class.java)
