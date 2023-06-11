@@ -47,7 +47,7 @@ class UserRepository(
         return apiService.userRegister(user)
     }
 
-    fun userLogin(token: String): ApiService {
+    private fun userNameLogin(token: String): ApiService {
         val client = OkHttpClient.Builder()
             .addInterceptor(ApiInterceptor(token))
             .build()
@@ -61,7 +61,9 @@ class UserRepository(
 
     fun appUserName(
         token: String
-    ): Call<UserResponse> = userLogin(token).userName()
+    ): Call<UserResponse> {
+        return userNameLogin(token).userName()
+    }
 
     companion object {
         @Volatile

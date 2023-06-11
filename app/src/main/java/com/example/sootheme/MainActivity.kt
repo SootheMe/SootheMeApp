@@ -5,17 +5,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.sootheme.databinding.ActivityMainBinding
-import com.example.sootheme.model.LoginViewModel
 import com.example.sootheme.model.MainViewModel
 import com.example.sootheme.network.ViewModelFactory
 import com.example.sootheme.ui.BotActivity
-import com.example.sootheme.ui.RegisterActivity
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -47,13 +46,14 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getUserToken().observe(this) { token ->
             if (token != null) {
+                Log.e("MainActivity", "token: $token")
                 viewModel.getUser(token)
             }
         }
 
         viewModel.user.observe(this) { user ->
             if (user != null) {
-                viewModel.saveUserName(user.userName)
+                viewModel.saveUserName(user)
             }
         }
 
@@ -79,8 +79,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.tvConsultation.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            //val intent = Intent(this, MainActivity::class.java)
+            //startActivity(intent)
+            viewModel.userLogoutApp()
+            finish()
         }
     }
 

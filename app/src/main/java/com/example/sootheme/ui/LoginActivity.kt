@@ -12,7 +12,6 @@ import com.example.sootheme.MainActivity
 import com.example.sootheme.R
 import com.example.sootheme.databinding.ActivityLoginBinding
 import com.example.sootheme.model.LoginViewModel
-import com.example.sootheme.model.RegisterViewModel
 import com.example.sootheme.network.ViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
@@ -67,8 +66,8 @@ class LoginActivity : AppCompatActivity() {
                         loginViewModel.userLoginApp()
                         loginViewModel.user.observe(this) { user ->
                             if (user != null) {
-                                loginViewModel.saveUserToken(user.token)
-                                Log.e("LoginActivity", "token: ${user.token}")
+                                loginViewModel.saveUserToken(user)
+                                Log.e("LoginActivity", "token: $user")
                             }
                         }
                         val intent = Intent(this, MainActivity::class.java)
