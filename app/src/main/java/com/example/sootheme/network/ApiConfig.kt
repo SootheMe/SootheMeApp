@@ -18,7 +18,7 @@ class ApiConfig {
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://sootheme-388911.et.r.appspot.com/")
+                .baseUrl("https://app1-dot-sootheme-388911.et.r.appspot.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

@@ -55,6 +55,7 @@ class SettingPref private constructor(
         dataStore.edit {
             it[FIRST_TIME_KEY] = true
             it[USER_TOKEN_KEY] = ""
+            it[USER_NAME_KEY] = ""
         }
     }
 

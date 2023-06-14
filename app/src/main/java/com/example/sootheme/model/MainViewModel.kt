@@ -34,7 +34,7 @@ class MainViewModel(private val repo: UserRepository) : ViewModel() {
                     if (responseBody != null) {
                         _user.postValue(responseBody)
                     } else {
-                        Log.e("LoginViewModel", "responseBody is null")
+                        Log.e("MainViewModel", "responseBody is null")
                     }
                 } else {
                     Log.e("MainViewModel", "response is not successful")

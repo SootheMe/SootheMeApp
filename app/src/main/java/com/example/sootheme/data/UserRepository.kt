@@ -7,6 +7,7 @@ import com.example.sootheme.network.ApiInterceptor
 import com.example.sootheme.network.ApiService
 import com.example.sootheme.network.UserResponse
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -52,7 +53,21 @@ class UserRepository(
             .addInterceptor(ApiInterceptor(token))
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://sootheme-388911.et.r.appspot.com/")
+            .baseUrl("https://app1-dot-sootheme-388911.et.r.appspot.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+        return retrofit.create(ApiService::class.java)
+    }
+
+    fun getStory(): ApiService {
+        val loggingInterceptor =
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://app2-dot-sootheme-388911.et.r.appspot.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
@@ -63,6 +78,10 @@ class UserRepository(
         token: String
     ): Call<UserResponse> {
         return userNameLogin(token).userName()
+    }
+
+    fun storyTime(): Call<ArrayList<StoryData>>{
+        return getStory().getStory()
     }
 
     companion object {

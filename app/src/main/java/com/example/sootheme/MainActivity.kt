@@ -15,6 +15,7 @@ import com.example.sootheme.databinding.ActivityMainBinding
 import com.example.sootheme.model.MainViewModel
 import com.example.sootheme.network.ViewModelFactory
 import com.example.sootheme.ui.BotActivity
+import com.example.sootheme.ui.StoryActivity
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.tvStory.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, StoryActivity::class.java)
             startActivity(intent)
         }
 

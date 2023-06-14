@@ -28,4 +28,8 @@
     <string name="login_success">Login Berhasil!</string>
     <string name="login_failed">Login Gagal!</string>
     <string name="welcome">Selamat Datang!</string>
+    <string name="story_name">Story Name</string>
+    <string name="author">Author</string>
+    <string name="desc">Description</string>
+    <string name="cover_buku">Cover Buku</string>
 </resources>

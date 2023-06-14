@@ -1,5 +1,6 @@
 package com.example.sootheme.network
 
+import com.example.sootheme.data.StoryData
 import com.google.gson.annotations.SerializedName
 
 data class UserResponse(
@@ -11,4 +12,7 @@ data class UserResponse(
 
     @field:SerializedName("userName")
     val userName: String? = null,
+
+    val storyTime: ArrayList<StoryData>
+
 )

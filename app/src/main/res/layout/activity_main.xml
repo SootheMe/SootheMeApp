@@ -75,7 +75,7 @@
                     android:layout_height="60dp"
                     android:contentDescription="@string/foto_profil"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/name" />
+                    android:src="@drawable/chatbotprofile" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
