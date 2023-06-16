@@ -42,12 +42,6 @@ class MusicActivity : AppCompatActivity() {
             }
         })
 
-        val backButton: ImageView = findViewById(R.id.bck_button)
-
-        backButton.setOnClickListener {
-            onBackPressed()
-        }
-
         binding.apply {
             recyclerView.setHasFixedSize(true)
             recyclerView.layoutManager = LinearLayoutManager(this@MusicActivity)
