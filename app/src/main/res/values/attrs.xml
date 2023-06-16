@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="progressBackgroundWidth" format="dimension" />
+    <attr name="roundEdges" format="boolean" />
+    <attr name="progressWidth" format="dimension" />
+    <attr name="progressColor" format="color" />
+    <attr name="progressBackgroundColor" format="color" />
+    <attr name="thumb" format="reference" />
+</resources>
