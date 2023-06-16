@@ -6,8 +6,11 @@ import com.example.sootheme.data.datastore.SettingPref
 import com.example.sootheme.network.ApiInterceptor
 import com.example.sootheme.network.ApiService
 import com.example.sootheme.network.UserResponse
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.logging.HttpLoggingInterceptor
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -74,14 +77,56 @@ class UserRepository(
         return retrofit.create(ApiService::class.java)
     }
 
+    fun getMusic(): ApiService {
+        val loggingInterceptor =
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://app3-dot-sootheme-388911.et.r.appspot.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+        return retrofit.create(ApiService::class.java)
+    }
+
+    fun getChat(): ApiService {
+        val loggingInterceptor =
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://sootheme-chatbot-gq3kwyfg4a-et.a.run.app/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+        return retrofit.create(ApiService::class.java)
+    }
+
+    fun getBotResponse(
+        text: String
+    ): Call<ChatResponse> {
+        val jsonBody = JSONObject().apply {
+            put("text", text)
+        }
+        val requestBody = jsonBody.toString().toRequestBody("application/json".toMediaType())
+        return getChat().botChat(requestBody)
+    }
+
     fun appUserName(
         token: String
     ): Call<UserResponse> {
         return userNameLogin(token).userName()
     }
 
-    fun storyTime(): Call<ArrayList<StoryData>>{
+    fun storyTime(): Call<ArrayList<StoryData>> {
         return getStory().getStory()
+    }
+
+    fun musicTime(): Call<ArrayList<MusicData>> {
+        return getMusic().getMusic()
     }
 
     companion object {

@@ -4,9 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.sootheme.MainActivity
-import com.example.sootheme.R
 import com.example.sootheme.databinding.ActivityBotBinding
-import com.example.sootheme.databinding.ActivityLoginBinding
 
 class BotActivity : AppCompatActivity() {
 
@@ -20,6 +18,11 @@ class BotActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        binding.cbButton.setOnClickListener {
+            val intent = Intent(this, ChatBotActivity::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.example.sootheme.ui
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.example.sootheme.databinding.ActivityDetailStoryBinding
-import com.example.sootheme.databinding.ActivityStoryBinding
 import com.example.sootheme.model.DetailStoryViewModel
-import com.example.sootheme.model.StoryViewModel
 import com.example.sootheme.network.ViewModelFactory
 
 class DetailStoryActivity : AppCompatActivity() {
@@ -37,6 +37,7 @@ class DetailStoryActivity : AppCompatActivity() {
                     //loadingState(false)
                     binding.apply {
                         binding.tvName.text = story.title
+                        binding.tvAuthor.text = story.author
                         binding.tvDesc.text = story.description
                         Glide.with(this@DetailStoryActivity)
                             .load(story.cover)
@@ -49,6 +50,27 @@ class DetailStoryActivity : AppCompatActivity() {
             }
         }
 
+        binding.actionShare.setOnClickListener {
+            val pdfUrl = intent.getStringExtra(EXTRA_CONTENT)
+            if (pdfUrl != null) {
+                openPDFWithThirdPartyApp(pdfUrl)
+            }
+        }
+
+    }
+
+    private fun openPDFWithThirdPartyApp(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setDataAndType(Uri.parse(url), "application/pdf")
+        intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+
+        // Verify if there is an app available to handle the intent
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(Intent.createChooser(intent, "Open PDF with"))
+        } else {
+            // No app available to handle the intent
+            Toast.makeText(this, "No PDF viewer app found", Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {

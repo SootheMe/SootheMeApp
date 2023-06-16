@@ -45,13 +45,13 @@ class SettingPref private constructor(
         it[FIRST_TIME_KEY] ?: true
     }
 
-    suspend fun login(){
+    suspend fun login() {
         dataStore.edit {
             it[FIRST_TIME_KEY] = false
         }
     }
 
-    suspend fun logout(){
+    suspend fun logout() {
         dataStore.edit {
             it[FIRST_TIME_KEY] = true
             it[USER_TOKEN_KEY] = ""

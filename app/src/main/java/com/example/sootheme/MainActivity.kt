@@ -15,6 +15,7 @@ import com.example.sootheme.databinding.ActivityMainBinding
 import com.example.sootheme.model.MainViewModel
 import com.example.sootheme.network.ViewModelFactory
 import com.example.sootheme.ui.BotActivity
+import com.example.sootheme.ui.MusicActivity
 import com.example.sootheme.ui.StoryActivity
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -22,6 +23,7 @@ import java.util.Locale
 import java.util.Calendar
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels {
@@ -75,13 +77,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.tvMusic.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MusicActivity::class.java)
             startActivity(intent)
         }
 
         binding.tvConsultation.setOnClickListener {
-            //val intent = Intent(this, MainActivity::class.java)
-            //startActivity(intent)
             viewModel.userLogoutApp()
             finish()
         }
